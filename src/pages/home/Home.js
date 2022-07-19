@@ -4,6 +4,7 @@ import { analytics } from '../../firebaseConfig'
 import { logEvent } from 'firebase/analytics'
 
 import Navbar from '../../components/navbar/Navbar'
+import Contact from '../../components/contact/Contact'
 
 import styles from './Home.module.css'
 
@@ -19,6 +20,7 @@ const Home = () => {
     <div className='globalContainer'>
       <div className='globalWrapper'>
         <Navbar />
+        <Contact />
       </div>
     </div>
   )
