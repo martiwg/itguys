@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import Navbar from '../../components/navbar/Navbar'
 import fiverImage from '../../assets/images/fiver.png'
+=======
+import Navbar from '../navbar/Navbar'
+
+>>>>>>> home
 import styles from './Contact.module.css'
 
 const Contact = () => {
@@ -7,12 +12,16 @@ const Contact = () => {
     <div className='globalContainer'>
       <div className='globalWrapper'>
         <Navbar />
+<<<<<<< HEAD
         <ContactUs />
+=======
+>>>>>>> home
       </div>
     </div>
   )
 }
 
+<<<<<<< HEAD
 const ContactUs = () => {
     return(
       // <div className={styles.container}>
@@ -57,4 +66,6 @@ const ContactUs = () => {
 }
 
 
+=======
+>>>>>>> home
 export default Contact
