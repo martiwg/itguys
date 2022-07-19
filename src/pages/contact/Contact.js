@@ -2,7 +2,7 @@ import Navbar from '../../components/navbar/Navbar'
 
 import styles from './Contact.module.css'
 
-const About = () => {
+const Contact = () => {
   return(
     <div className='globalContainer'>
       <div className='globalWrapper'>
@@ -12,4 +12,4 @@ const About = () => {
   )
 }
 
-export default About
+export default Contact
