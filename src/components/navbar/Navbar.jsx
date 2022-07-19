@@ -7,34 +7,26 @@ const Navbar = () => {
     <nav className={styles.container}>
       <img src={logoImg} className={styles.logoImg} alt='logo'/>
       <div className={styles.navLinks}>
-        <a
+        <div
           className={styles.navLink}
-          href='/'
-          rel='noopener noreferrer'
           >
           Home
-        </a>
-        <a
+        </div>
+        <div
           className={styles.navLink}
-          href='/about'
-          rel='noopener noreferrer'
         >
           About
-        </a>
-        <a
+        </div>
+        <div
           className={styles.navLink}
-          href='/work'
-          rel='noopener noreferrer'
         >
           Work
-        </a>
-        <a
+        </div>
+        <div
           className={styles.navLink}
-          href='/contact'
-          rel='noopener noreferrer'
         >
           Contact
-        </a>
+        </div>
       </div>
     </nav>
   )
