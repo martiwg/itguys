@@ -29,13 +29,14 @@ const ContactUs = () => {
       <div className={styles.container}>
         <div className={styles.secondContainer}>
           <div className={styles.leftContainer}>
-            <div className={styles.leftContainerTitle}>
-              <h1>Contact</h1>
-            </div>
-            <div className={styles.leftContainerText}>
-              <p>
-                Si quieres contactar conmigo, puedes hacerlo a través de cualquiera de los siguientes medios:
+            <h1>Get a quote</h1>
+            {/* create a text with margin left and top */}
+            <p className={styles.text}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque euismod, nisi eu consectetur consectetur,
               </p>
+            {/* <p> Fill up the form and the team will get back to you within 24 hours </p> */}
+            <div className={styles.leftContainerText}>
               <p>
                 <a href="mailto:
                 ">

@@ -26,6 +26,15 @@
     height: 20rem;
 }
 
+.text {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 
 .leftContainer{
     flex-grow: 1;
@@ -35,6 +44,7 @@
     height: 100%;
     background-color: green;
 }
+
 .rightContainer{
     flex-grow: 1;
     height: 100%;
