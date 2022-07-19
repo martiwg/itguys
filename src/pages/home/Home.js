@@ -1,9 +1,13 @@
 import styles from './Home.module.css'
 
+import Navbar from '../../components/navbar/Navbar'
+
 const Home = () => {
   return(
-    <div>
-      <h1>Home</h1>
+    <div className='globalContainer'>
+      <div className='globalWrapper'>
+        <Navbar />
+      </div>
     </div>
   )
 }

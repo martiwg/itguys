@@ -43,3 +43,18 @@ html{
 
   --sidebar-icon-size: 3rem;
 }
+
+.globalContainer{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.globalWrapper{
+  width: 80vw;
+  max-width: 1600px;
+  flex-grow: 1;
+}

@@ -1,0 +1,27 @@
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+}
+
+.logoImg{
+  height: 4rem;
+}
+
+.navLinks{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 5rem;
+}
+
+.navLink{
+  text-decoration: none;
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
