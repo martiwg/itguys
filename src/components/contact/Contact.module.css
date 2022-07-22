@@ -1,4 +1,6 @@
 .container{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   width: 100%;
   align-content: center;
   border-radius: var(--border-radius-3);

@@ -86,7 +86,10 @@ const Contact = () => {
     
 
   return(
-    <div className={styles.container}>
+    <section
+      id='contact'
+      className={styles.container}
+    >
       <div className={styles.leftSection}>
         <div>
           <div className={styles.title}>
@@ -270,7 +273,7 @@ const Contact = () => {
           Send Message
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

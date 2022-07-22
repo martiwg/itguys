@@ -55,6 +55,7 @@ html{
 }
 
 .globalWrapper{
+  position: relative;
   width: 70vw;
   max-width: 1100px;
   flex-grow: 1;
