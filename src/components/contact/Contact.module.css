@@ -34,12 +34,30 @@
   font-weight: 300;
 }
 
+.contactWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: .5rem;
+}
+
 .contactItem{
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1.2rem;
   text-decoration: none;
+  padding: .75rem 0;
+  transition: .5s ease-in-out;
+  border-radius: var(--border-radius-1);
+  border: 2px solid transparent;
+}
+
+.contactItem:hover{
+  background-color: #0c0358;
+  padding: .75rem 1rem;
+  border: 2px solid #2e3ea8;
 }
 
 .contactSvg{
@@ -54,19 +72,13 @@
   color: #cccbd6;
   font-size: .9rem;
   font-weight: 300;
-  padding: .75rem 0;
 }
 
-.rightSection{
-  width: 24rem;
-  height: 100%;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-2);
+.socialsWrapper{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .socialsIcon{
@@ -81,4 +93,15 @@
 
 .socialsIcon:hover{
   background-color: var(--color-primary);
+}
+
+.rightSection{
+  width: 24rem;
+  height: 100%;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
