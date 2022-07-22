@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import { analytics } from '../../firebaseConfig'
 import { logEvent } from 'firebase/analytics'
+import { analytics } from '../../firebaseConfig'
 
 import Navbar from '../../components/navbar/Navbar'
 import Contact from '../../components/contact/Contact'
@@ -10,7 +10,7 @@ import styles from './Home.module.css'
 
 const Home = () => {
   useEffect(() => {
-    logEvent(analytics, 'page_view', {
+    logEvent(analytics, 'CE_page_view', {
       title: 'Home',
       path: window.location.pathname
     })
