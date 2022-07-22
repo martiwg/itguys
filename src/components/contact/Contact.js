@@ -1,8 +1,90 @@
-import fiverImage from '../../assets/images/fiver.png'
-import mail from '../../assets/images/mail.png'
+import { useState, useRef } from 'react'
+
+import { addDoc, serverTimestamp, collection } from 'firebase/firestore'
+import { db } from '../../firebaseConfig'
+
 import styles from './Contact.module.css'
 
+const FOCUSED_TYPES = {
+  NAME: 'name',
+  EMAIL: 'email',
+  MESSAGE: 'message',
+  NONE: 'none'
+}
+
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [focusedField, setFocusedField] = useState('')
+
+  const [loading, setLoading] = useState(false)
+
+  const nameRef = useRef()
+  const emailRef = useRef()
+  const messageRef = useRef()
+
+  const handleNameChange = (e) => {
+    if(e.target.value.length > 50) return
+
+    setName(e.target.value)
+  }
+
+  const handleEmailChange = (e) => {
+    if(e.target.value.length > 100) return
+
+    setEmail(e.target.value)
+  }
+
+  const handleMessageChange = (e) => {
+    if(e.target.value.length > 2400) return
+
+    setMessage(e.target.value)
+  }
+
+  const handleSubmit = async () => {
+    if(loading) return
+
+    if(name.length === 0){
+      nameRef.current.focus()
+      return
+    }
+
+    if(email.length === 0){
+      emailRef.current.focus()
+      return
+    }
+
+    if(message.length === 0){
+      messageRef.current.focus()
+      return
+    }
+
+    setLoading(true)
+
+    try{
+      await addDoc(collection(db, 'messages'), {
+        name,
+        email,
+        message,
+        viewed: false,
+        trashed: false,
+        starred: false,
+        timestamp: serverTimestamp(),
+      })
+      .then(() => {
+        setName('')
+        setEmail('')
+        setMessage('')
+      })
+    }catch(err){
+      console.log(err)
+    }
+
+    setLoading(false)
+  }
+    
+
   return(
     <div className={styles.container}>
       <div className={styles.leftSection}>
@@ -11,13 +93,13 @@ const Contact = () => {
             Get a quote
           </div>
           <div className={styles.subtitle}>
-            Fill up the form and our Team will get back to you within 24 hours
+            Fill up the form and our Team will get back to you within 24 hours with a budget offer!
           </div>
         </div>
         <div className={styles.contactWrapper}>
           <a
             className={styles.contactItem}
-            href='tel:+34 654 733 733'
+            href='tel:+34 653 559 770'
           >
           <div className={styles.contactSvg}>
             <svg width='100%' height='100%' fill='var(--color-primary)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -25,7 +107,20 @@ const Contact = () => {
             </svg>
           </div>
             <div className={styles.contactText}>
-                +34 654 733 733
+              +34 653 559 770
+            </div>
+          </a>
+          <a
+            className={styles.contactItem}
+            href='tel:+34 685 322 841'
+          >
+          <div className={styles.contactSvg}>
+            <svg width='100%' height='100%' fill='var(--color-primary)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"/>
+            </svg>
+          </div>
+            <div className={styles.contactText}>
+              +34 685 322 841
             </div>
           </a>
           <a 
@@ -72,7 +167,108 @@ const Contact = () => {
         </div>
       </div>
       <div className={styles.rightSection}>
-
+        <div className={styles.fieldsWrapper}>
+          <div className={styles.formTitle}>
+            Your Name
+          </div>
+          <div
+            className={styles.field} 
+            style={{border: focusedField === FOCUSED_TYPES.NAME ? '2px solid var(--color-primary)' : '2px solid var(--color-light)'}}
+            onClick={() => {
+              nameRef.current.focus()
+            }}
+            >
+            <svg height='1rem' width='1rem' style={{transition: '.5s ease-in-out'}} fill={focusedField === FOCUSED_TYPES.NAME ? 'var(--color-primary)' : 'var(--color-light)'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/>
+            </svg>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                emailRef.current.focus()
+              }}
+              className={styles.form}
+              >
+              <input
+                type='text'
+                placeholder='Name'
+                maxLength={50}
+                value={name}
+                onChange={e => handleNameChange(e)}
+                className={styles.input}
+                ref={nameRef}
+                onBlur={() => {
+                  setFocusedField(FOCUSED_TYPES.NONE)
+                }}
+                onFocus={() => {
+                  setFocusedField(FOCUSED_TYPES.NAME)
+                }}
+              />
+            </form>
+          </div>
+          <div className={styles.formTitle}>
+            Mail
+          </div>
+          <div
+            className={styles.field}
+            style={{border: focusedField === FOCUSED_TYPES.EMAIL ? '2px solid var(--color-primary)' : '2px solid var(--color-light)'}}
+            onClick={() => {
+              emailRef.current.focus()
+            }}
+          >
+            <svg width='1rem' height='1rem' style={{transition: '.5s ease-in-out'}} fill={focusedField === FOCUSED_TYPES.EMAIL ? 'var(--color-primary)' : 'var(--color-light)'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/>
+            </svg>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                messageRef.current.focus()
+              }}
+              className={styles.form}
+            >
+              <input
+                type='text'
+                placeholder='E-mail'
+                maxLength={100}
+                value={email}
+                onChange={e => handleEmailChange(e)}
+                className={styles.input}
+                ref={emailRef}
+                onBlur={() => {
+                  setFocusedField(FOCUSED_TYPES.NONE)
+                }}
+                onFocus={() => {
+                  setFocusedField(FOCUSED_TYPES.EMAIL)
+                }}
+              />
+            </form>
+          </div>
+          <div className={styles.formTitle}>
+            Tell us!
+          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              handleSubmit()
+            }}
+            className={styles.messageForm}
+          >
+            <textarea
+              placeholder='Message'
+              maxLength={2400}
+              value={message}
+              onChange={e => handleMessageChange(e)}
+              ref={messageRef}
+              className={styles.messageTextarea}
+            />
+          </form>
+        </div>
+        <div
+          className={styles.sendBtn}
+          style={{opacity: loading ? .5 : 1}}
+          onClick={() => handleSubmit()}
+        >
+          Send Message
+        </div>
       </div>
     </div>
   )
