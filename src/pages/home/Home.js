@@ -5,8 +5,9 @@ import { analytics } from '../../firebaseConfig'
 
 import Navbar from '../../components/navbar/Navbar'
 import Landing from '../../components/landing/Landing'
-import Contact from '../../components/contact/Contact'
+import Bulletpoints from '../../components/bulletpoints/Bulletpoints'
 import About from '../../components/about/About'
+import Contact from '../../components/contact/Contact'
 
 import styles from './Home.module.css'
 
@@ -23,6 +24,7 @@ const Home = () => {
       <div className='globalWrapper'>
         <Navbar />
         <Landing />
+        <Bulletpoints />
         <About/>
         <Contact />
       </div>

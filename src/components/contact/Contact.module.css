@@ -7,7 +7,8 @@
   align-items: center;
   background-color: var(--color-secondary);
   padding: 3rem;
-  height: 75vh;
+  aspect-ratio: 1.75;
+  max-height: 75vh;
 }
 
 .leftSection{
@@ -28,7 +29,7 @@
 
 .subtitle{
   color: var(--color-white);
-  color: #b2b0c1;
+  color: var(--color-gray-text-light);
   max-width: 35ch;
   font-size: .95rem;
   font-weight: 300;

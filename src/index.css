@@ -17,7 +17,8 @@ html{
 :root{
   --color-primary: #3e6bfb;
   --color-secondary: #080049;
-  --color-primary-light: #0ABAFF;
+  --color-primary-light: #567bf5;
+  --color-primary-super-light: #6b8af3;
   --color-primary-dark: #0ABAFF;
   --color-red: #ff736e;
   --color-green: #23ed74;
@@ -31,6 +32,9 @@ html{
   --color-super-light: rgba(181, 187, 200, 0.1);
   --color-dark-variant: #677483;
   --color-background: #f9fbfe;
+
+  --color-gray-text: #7d8da1;
+  --color-gray-text-light: #b2b0c1;
 
   --card-border-radius: 2rem;
   --border-radius-1: 0.4rem;
